@@ -1,21 +1,40 @@
+---
+import { Image } from 'astro:assets';
+import nosotrosImage from '../assets/images/nosotros.webp';
+---
 
-<section id="nosotros" class="py-24 px-6 bg-black text-white">
-  
-    <div class="max-w-5xl mx-auto text-center">
+<section id="nosotros" class="min-h-screen flex items-center bg-black text-white relative py-12 px-6 overflow-hidden">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+    <!-- Columna de texto -->
+    <div class="fade-in-element">
       <h2 class="text-3xl md:text-5xl font-bold mb-6">Sobre TG2 Construcción</h2>
       <p class="text-gray-300 text-lg leading-relaxed">
-        Somos una empresa dedicada a entregar soluciones integrales en construcción, 
+        Somos una empresa dedicada a entregar soluciones integrales en construcción,
         remodelación y proyectos arquitectónicos. Trabajamos con pasión, precisión y compromiso.
       </p>
       <p class="text-gray-300 text-lg leading-relaxed mt-4">
-        Nuestro equipo de expertos está listo para llevar tu proyecto al siguiente nivel, 
-        garantizando calidad y satisfacción en cada etapa del proceso.  </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Nuestro equipo de expertos está listo para llevar tu proyecto al siguiente nivel,
+        garantizando calidad y satisfacción en cada etapa del proceso.
+      </p>
+      <p class="text-gray-300 mt-4">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
     </div>
-  
+    
+    <!-- Columna de imagen (ajustada al tamaño del texto) -->
+    <div class="fade-in-element delay-300 flex items-start justify-center">
+      <div class="rounded-xl overflow-hidden shadow-2xl max-w-md">
+        <Image 
+          src={nosotrosImage} 
+          alt="TG2 Construcción" 
+          class="w-full h-auto"
+          width={400}
+          height={400}
+        />
+      </div>
+    </div>
+  </div>
 </section>
