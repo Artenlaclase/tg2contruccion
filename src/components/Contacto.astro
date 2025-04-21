@@ -1,0 +1,88 @@
+---
+---
+
+<section id="contacto" class="py-24 px-6 bg-black text-white">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl md:text-5xl font-bold mb-6">Contacto</h2>
+      <p class="text-gray-300 mb-12">¿Tienes un proyecto en mente? Escríbenos y conversemos.</p>
+      
+      <form 
+        id="contactForm"
+        class="grid grid-cols-1 gap-6 text-left"
+      >
+        <input
+          type="text"
+          name="name"
+          placeholder="Nombre"
+          required
+          class="p-4 bg-neutral-900 border border-neutral-700 rounded-lg placeholder-gray-500 text-white"
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Correo electrónico"
+          required
+          class="p-4 bg-neutral-900 border border-neutral-700 rounded-lg placeholder-gray-500 text-white"
+        />
+        <textarea
+          name="message"
+          rows="5"
+          placeholder="Mensaje"
+          required
+          class="p-4 bg-neutral-900 border border-neutral-700 rounded-lg placeholder-gray-500 text-white"
+        ></textarea>
+        <button
+          type="submit"
+          class="bg-white text-black py-3 px-6 rounded-lg font-semibold hover:bg-gray-200 transition"
+        >
+          Enviar mensaje
+        </button>
+      </form>
+      
+      <!-- Modal de confirmación (oculto por defecto) -->
+      <div id="confirmationModal" class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-70" style="display: none;">
+        <div class="bg-neutral-900 p-8 rounded-xl max-w-md mx-4">
+          <h3 class="text-xl font-bold mb-4">Formulario de Prueba</h3>
+          <p class="mb-6">Este es un formulario de prueba/maqueta. Gracias por participar en esta demostración.</p>
+          <button id="closeModal" class="bg-white text-black py-2 px-4 rounded font-medium hover:bg-gray-200 transition">
+            Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const contactForm = document.getElementById('contactForm') as HTMLFormElement | null;
+      const confirmationModal = document.getElementById('confirmationModal') as HTMLDivElement | null;
+      const closeModalButton = document.getElementById('closeModal') as HTMLButtonElement | null;
+      
+      if (contactForm && confirmationModal && closeModalButton) {
+        // Manejar envío del formulario
+        contactForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          
+          // Mostrar el modal
+          confirmationModal.classList.remove('hidden');
+          
+          // Resetear el formulario
+          contactForm.reset();
+        });
+        
+        // Cerrar el modal al hacer clic en el botón
+        closeModalButton.addEventListener('click', () => {
+          if (confirmationModal) {
+            confirmationModal.classList.add('hidden');
+          }
+        });
+        
+        // También cerrar el modal al hacer clic fuera de él
+        confirmationModal.addEventListener('click', (e) => {
+          if (e.target === confirmationModal) {
+            confirmationModal.classList.add('hidden');
+          }
+        });
+      }
+    });
+  </script>
