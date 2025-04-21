@@ -1,6 +1,46 @@
-<section class="h-screen flex items-center justify-center text-center px-4">
-    <div>
-      <h2 class="text-4xl md:text-6xl font-bold mb-4">Construimos tu visión</h2>
-      <p class="text-lg text-gray-300">Proyectos residenciales, comerciales y más.</p>
-    </div>
-  </section>
+---
+import { Image } from 'astro:assets';
+import heroImage from '../assets/images/Hero.webp';
+---
+
+<section class="relative h-screen flex items-center justify-center text-center px-4 bg-black">
+  <div class="z-10">
+    <h2 class="text-4xl md:text-6xl font-bold mb-4 text-white">Construimos tu visión</h2>
+    <p class="text-lg text-gray-300">Proyectos residenciales, comerciales y más.</p>
+  </div>
+  <div id="hero-image" class="absolute inset-0 w-full h-full opacity-0 transition-opacity duration-700 ease-in-out">
+    <Image 
+      src={heroImage} 
+      alt="Hero background" 
+      class="w-full h-full object-cover"
+    />
+  </div>
+</section>
+
+<script>
+  // Función para controlar la aparición de la imagen al hacer scroll
+  function handleScroll() {
+    const heroImage = document.getElementById('hero-image');
+    
+    // Verificar que heroImage no sea null antes de usarlo
+    if (!heroImage) return;
+    
+    const scrollPosition = window.scrollY;
+    
+    // Puedes ajustar este valor según cuánto scroll quieres que se necesite para mostrar la imagen
+    const scrollThreshold = 100;
+    
+    if (scrollPosition > scrollThreshold) {
+      heroImage.classList.add('opacity-100');
+      heroImage.classList.remove('opacity-0');
+    } else {
+      heroImage.classList.add('opacity-0');
+      heroImage.classList.remove('opacity-100');
+    }
+  }
+
+  // Agregar el event listener cuando el DOM esté listo
+  document.addEventListener('DOMContentLoaded', () => {
+    window.addEventListener('scroll', handleScroll);
+  });
+</script>
