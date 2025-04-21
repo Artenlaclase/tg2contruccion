@@ -1,10 +1,1 @@
 @import "tailwindcss";
-body {
-  /* Ensure Tailwind CSS is configured correctly */
-  background-color: var(--tw-bg-primary);
-  color: var(--tw-text-white);
-  font-family: var(--tw-font-sans);
-}
-html {
-  scroll-behavior: smooth;
-}
