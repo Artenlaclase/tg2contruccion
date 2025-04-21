@@ -1,4 +1,7 @@
 ---
+import obra1 from '../assets/images/obra1.webp';
+import obra2 from '../assets/images/obra2.webp';
+import obra3 from '../assets/images/obra3.webp';
 import FadeInSection from './FadeInSection.jsx';
 ---
 
@@ -8,15 +11,14 @@ import FadeInSection from './FadeInSection.jsx';
       <h2 class="text-3xl md:text-5xl font-bold mb-12">Portafolio</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         <div class="overflow-hidden rounded-xl">
-          <img src="/assets/obra1.jpg" alt="Proyecto 1" class="w-full h-64 object-cover hover:scale-105 transition duration-500" />
+          <img src={obra1.src} alt="Proyecto 1" class="w-full h-64 object-cover hover:scale-105 transition duration-500" />
         </div>
         <div class="overflow-hidden rounded-xl">
-          <img src="/assets/obra2.jpg" alt="Proyecto 2" class="w-full h-64 object-cover hover:scale-105 transition duration-500" />
+          <img src={obra2.src} alt="Proyecto 2" class="w-full h-64 object-cover hover:scale-105 transition duration-500" />
         </div>
         <div class="overflow-hidden rounded-xl">
-          <img src="/assets/obra3.jpg" alt="Proyecto 3" class="w-full h-64 object-cover hover:scale-105 transition duration-500" />
+          <img src={obra3.src} alt="Proyecto 3" class="w-full h-64 object-cover hover:scale-105 transition duration-500" />
         </div>
-        <!-- Agrega más bloques si tienes más imágenes -->
       </div>
     </div>
   </FadeInSection>
