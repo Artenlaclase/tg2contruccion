@@ -1,25 +1,60 @@
 ---
-
+import { Image } from 'astro:assets';
+import toolImage from '../assets/images/tool.webp';
+import tool01Image from '../assets/images/tool_01.webp';
+import tool02Image from '../assets/images/tool_02.webp';
 ---
 
-<section id="servicios" class="py-24 px-6 bg-primary text-white">
-  
-    <div class="max-w-6xl mx-auto text-center">
-      <h2 class="text-3xl md:text-5xl font-bold mb-12">Nuestros Servicios</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-        <div class="bg-neutral-900 p-6 rounded-xl shadow-md hover:shadow-xl transition">
+<section id="servicios" class="py-24 px-6 bg-black text-white">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-3xl md:text-5xl font-bold mb-12">Nuestros Servicios</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+      
+      <!-- Card 1: Construcción General -->
+      <div class="bg-neutral-900 rounded-xl shadow-md hover:shadow-xl transition overflow-hidden">
+        <div class="h-48 overflow-hidden">
+          <Image 
+            src={toolImage} 
+            alt="Construcción General" 
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div class="p-6">
           <h3 class="text-xl font-semibold mb-2">Construcción General</h3>
           <p class="text-gray-400">Proyectos residenciales, comerciales y obras civiles a gran escala.</p>
         </div>
-        <div class="bg-neutral-900 p-6 rounded-xl shadow-md hover:shadow-xl transition">
+      </div>
+      
+      <!-- Card 2: Remodelaciones -->
+      <div class="bg-neutral-900 rounded-xl shadow-md hover:shadow-xl transition overflow-hidden">
+        <div class="h-48 overflow-hidden">
+          <Image 
+            src={tool01Image} 
+            alt="Remodelaciones" 
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div class="p-6">
           <h3 class="text-xl font-semibold mb-2">Remodelaciones</h3>
           <p class="text-gray-400">Rediseño y modernización de espacios interiores y exteriores.</p>
         </div>
-        <div class="bg-neutral-900 p-6 rounded-xl shadow-md hover:shadow-xl transition">
+      </div>
+      
+      <!-- Card 3: Diseño Arquitectónico -->
+      <div class="bg-neutral-900 rounded-xl shadow-md hover:shadow-xl transition overflow-hidden">
+        <div class="h-48 overflow-hidden">
+          <Image 
+            src={tool02Image} 
+            alt="Diseño Arquitectónico" 
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div class="p-6">
           <h3 class="text-xl font-semibold mb-2">Diseño Arquitectónico</h3>
           <p class="text-gray-400">Asesoría y diseño técnico en base a tus necesidades.</p>
         </div>
       </div>
+      
     </div>
-  
+  </div>
 </section>
