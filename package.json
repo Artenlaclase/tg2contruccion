@@ -9,7 +9,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.7.4"
+    "@astrojs/react": "^4.2.4",
+    "astro": "^5.7.4",
+    "framer-motion": "^12.7.4"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
