@@ -1,10 +1,11 @@
 <nav class="fixed w-full top-0 z-50 bg-black">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <!-- Logo y nombre de la empresa - Ahora con enlace al inicio -->
+      <!-- Logo y nombre de la empresa - Texto oculto en móviles -->
       <div class="flex items-center gap-3">
-        <a href="#home" class="flex items-center gap-3">
+        <a href="/" class="flex items-center gap-3" data-astro-reload>
           <img src="/TG2_LOGO.png" alt="TG2 Construcción Logo" class="h-16 w-auto">
-          <h1 class="text-xl font-bold uppercase tracking-widest text-white">TG2 Construcción</h1>
+          <!-- Añadida clase 'hidden md:block' para ocultar en móviles -->
+          <h1 class="hidden md:block text-xl font-bold uppercase tracking-widest text-white">TG2 Construcción</h1>
         </a>
       </div>
       
@@ -15,7 +16,7 @@
         </svg>
       </button>
       
-      <!-- Links de navegación - ahora con clase para móviles -->
+      <!-- Links de navegación -->
       <ul id="nav-menu" class="hidden md:flex gap-6 text-sm uppercase tracking-wide text-white">
         <li class="group">
           <a href="#nosotros" class="relative block py-1 px-2 transition-colors duration-300 hover:text-gray-300">
@@ -45,53 +46,53 @@
     </div>
   </nav>
   
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
+  <script is:inline>
+    // Función para inicializar el navbar
+    function initNavbar() {
       // Script para el menú hamburguesa
       const menuToggle = document.getElementById('menu-toggle');
       const navMenu = document.getElementById('nav-menu');
       
-      if (menuToggle) {
-        menuToggle.addEventListener('click', () => {
-          if (navMenu) {
-            navMenu.classList.toggle('hidden');
-            navMenu.classList.toggle('flex');
-            navMenu.classList.toggle('flex-col');
-            navMenu.classList.toggle('absolute');
-            navMenu.classList.toggle('top-16');
-            navMenu.classList.toggle('left-0');
-            navMenu.classList.toggle('w-full');
-            navMenu.classList.toggle('bg-black');
-            navMenu.classList.toggle('py-4');
-            navMenu.classList.toggle('px-6');
-            navMenu.classList.toggle('gap-4');
-          }
+      if (menuToggle && navMenu) {
+        // Remover event listeners anteriores para evitar duplicados
+        menuToggle.replaceWith(menuToggle.cloneNode(true));
+        const newMenuToggle = document.getElementById('menu-toggle');
+        
+        newMenuToggle.addEventListener('click', () => {
+          navMenu.classList.toggle('hidden');
+          navMenu.classList.toggle('flex');
+          navMenu.classList.toggle('flex-col');
+          navMenu.classList.toggle('absolute');
+          navMenu.classList.toggle('top-16');
+          navMenu.classList.toggle('left-0');
+          navMenu.classList.toggle('w-full');
+          navMenu.classList.toggle('bg-black');
+          navMenu.classList.toggle('py-4');
+          navMenu.classList.toggle('px-6');
+          navMenu.classList.toggle('gap-4');
         });
       }
       
       // Cerrar menú al hacer clic en un enlace (para móviles)
       document.querySelectorAll('#nav-menu a').forEach(link => {
         link.addEventListener('click', () => {
-          if (window.innerWidth < 768) { // Solo para móviles
-            if (navMenu) {
-              navMenu.classList.add('hidden');
-              navMenu.classList.remove('flex');
-            }
+          if (window.innerWidth < 768 && navMenu) {
+            navMenu.classList.add('hidden');
+            navMenu.classList.remove('flex');
           }
         });
       });
       
       // Script para detectar la sección activa
-      const sections = document.querySelectorAll('section[id]');
-      const navLinks = document.querySelectorAll('nav a');
-      
       function highlightActiveSection() {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav a');
         const scrollY = window.scrollY;
         
         sections.forEach(section => {
           const htmlSection = section;
-          const sectionTop = (htmlSection as HTMLElement).offsetTop - 100;
-          const sectionHeight = (htmlSection as HTMLElement).offsetHeight;
+          const sectionTop = htmlSection.offsetTop - 100;
+          const sectionHeight = htmlSection.offsetHeight;
           const sectionId = section.getAttribute('id');
           
           if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
@@ -115,7 +116,21 @@
         });
       }
       
+      // Inicializar y configurar eventos
       highlightActiveSection();
       window.addEventListener('scroll', highlightActiveSection);
-    });
+      
+      // Forzar recarga al hacer clic en el logo
+      document.querySelector('a[href="/"]')?.addEventListener('click', (e) => {
+        if (e.currentTarget.getAttribute('data-astro-reload') !== null) {
+          window.location.href = '/';
+        }
+      });
+    }
+    
+    // Inicializar cuando el DOM esté listo
+    document.addEventListener('DOMContentLoaded', initNavbar);
+    
+    // Volver a inicializar después de navegación de Astro
+    document.addEventListener('astro:after-swap', initNavbar);
   </script>
