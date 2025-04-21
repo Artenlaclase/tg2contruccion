@@ -1,9 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
+@import "tailwindcss";
 body {
-  @apply bg-primary text-white font-sans;
+  /* Ensure Tailwind CSS is configured correctly */
+  background-color: var(--tw-bg-primary);
+  color: var(--tw-text-white);
+  font-family: var(--tw-font-sans);
 }
 html {
   scroll-behavior: smooth;
